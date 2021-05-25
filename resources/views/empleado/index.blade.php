@@ -13,15 +13,26 @@
     </thead>
 
     <tbody>
-    @foreach($empleado as $empleado)
-        <tr>      
+        @foreach($empleados as $empleado)
+        <tr>
             <td>{{ $empleado->id }}</td>
             <td>{{ $empleado->Foto }}</td>
             <td>{{ $empleado->Nombre }}</td>
             <td>{{ $empleado->ApellidoPaterno }}</td>
             <td>{{ $empleado->ApellidoMaterno }}</td>
             <td>{{ $empleado->Correo }}</td>
-            <td>Editar | Borrar</td>
+            <td>
+                <a href="{{ url('/empleado/'.$empleado->id.'/edit') }}">
+                    Editar
+                </a>
+                |
+                <form action=" {{ url('/empleado/'.$empleado->id) }}   " method="post">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <input type="submit" onclick="return confirm('¿ Quieres borrar registro ?')" value="Borrar">
+                </form>
+
+            </td>
         </tr>
         @endforeach
     </tbody>
