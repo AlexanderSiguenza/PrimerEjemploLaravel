@@ -1,4 +1,7 @@
 // Mostrar la lista de empleados :)
+
+<a href="{{ url('empleado/create') }}"> Registrar nuevo empleado </a>
+
 <table class="table table-light">
 
     <thead class="thead-light">
@@ -16,7 +19,9 @@
         @foreach($empleados as $empleado)
         <tr>
             <td>{{ $empleado->id }}</td>
-            <td>{{ $empleado->Foto }}</td>
+            <td>
+                <img src="{{ asset('storage').'/'.$empleado->Foto }}" width="100" alt="">
+            </td>
             <td>{{ $empleado->Nombre }}</td>
             <td>{{ $empleado->ApellidoPaterno }}</td>
             <td>{{ $empleado->ApellidoMaterno }}</td>
